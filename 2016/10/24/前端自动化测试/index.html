@@ -152,7 +152,24 @@
 </ul>
 <p>导致我们在这个基础上进项单元测试是完全不可能的，所以单元测试本身对代码质量有一定的要求，但是这个与我们所要求的前端好代码并不冲突，是相当契合的。</p>
 <p><strong>什么是TDD</strong><br><img src="/images/autoTest/tdd.png" alt="tdd"><br>如图这个就是最常见的TDD开发模式，我们优先进行test case的编写，同时开始代码的开发，直到case通过，并且在通过的基础上进一步进行代码的重构和优化。</p>
-<h3 id="搭建一个自己的自动化测试环境"><a href="#搭建一个自己的自动化测试环境" class="headerlink" title="搭建一个自己的自动化测试环境"></a>搭建一个自己的自动化测试环境</h3><p>分析了一些常用的测试框架之后，将测试框架的主要功能分为图中这些细节的模块，还分了下类。<br><img src="/images/autoTest/structure2.png" alt="structure"><br>而其中单元测试的最底层结构就是 </p>
+<hr>
+<h3 id="搭建一个自己的自动化测试环境"><a href="#搭建一个自己的自动化测试环境" class="headerlink" title="搭建一个自己的自动化测试环境"></a><strong>搭建一个自己的自动化测试环境</strong></h3><p>分析了一些常用的测试框架之后，将测试框架的主要功能分为图中这些细节的模块，还分了下类。<br><img src="/images/autoTest/structure2.png" alt="structure"><br>而其中单元测试的最底层结构就是测试框架和断言库</p>
+<ul>
+<li>测试框架: 判断内部是否存在异常，存在则console出对应的text信息</li>
+<li><p>断言库: actual值与expect值不一样时，就抛出异常，供外部测试框架检测到，这就是为什么有些测试框架可以自由选择断言库的原因，只要可以抛出异常，外部测试框架就可以工作</p>
+<p>其实这两个本质的实现原理非常简单,简单的实现demo如下</p>
+<pre><code>
+ try(实际运行值 != 预期值){
+     console.log("出错了");
+ }
+</code>
+</pre>
+
+
+
+
+</li>
+</ul>
 
         </div>
       </article>
