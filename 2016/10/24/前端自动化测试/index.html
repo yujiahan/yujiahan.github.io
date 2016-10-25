@@ -142,8 +142,8 @@
 <li>端到端测试</li>
 <li>集成测试</li>
 </ol>
-<h2 id="1-单元测试"><a href="#1-单元测试" class="headerlink" title="1 单元测试"></a>1 单元测试</h2><p><strong>什么是单元测试</strong><br><em>单元测试主要针对的是针对单一组件的测试</em></p>
-<p><strong>什么样的代码可以进行单元测试</strong><br>这篇博客<a href="http://alistapart.com/article/writing-testable-javascript" target="_blank" rel="external">writing testable javascript</a> 其中的demo其实就分析了常见的代码写法，也许在实现上来说并无问题，但是它存在</p>
+<h2 id="1-单元测试"><a href="#1-单元测试" class="headerlink" title="1 单元测试"></a>1 单元测试</h2><h3 id="一些背景知识"><a href="#一些背景知识" class="headerlink" title="一些背景知识"></a>一些背景知识</h3><p><strong>什么是单元测试?</strong><br><em>单元测试主要针对的是针对单一组件的测试</em></p>
+<p><strong>什么样的代码可以进行单元测试?</strong><br>这篇博客<a href="http://alistapart.com/article/writing-testable-javascript" target="_blank" rel="external">writing testable javascript</a> 其中的demo其实就分析了常见的代码写法，也许在实现上来说并无问题，但是它存在</p>
 <ul>
 <li>代码结构不明确，</li>
 <li>太复杂的函数 </li>
@@ -151,25 +151,16 @@
 <li>网络请求和dom操纵耦合在一起 等等问题，</li>
 </ul>
 <p>导致我们在这个基础上进项单元测试是完全不可能的，所以单元测试本身对代码质量有一定的要求，但是这个与我们所要求的前端好代码并不冲突，是相当契合的。</p>
-<p><strong>什么是TDD</strong><br><img src="/images/autoTest/tdd.png" alt="tdd"><br>如图这个就是最常见的TDD开发模式，我们优先进行test case的编写，同时开始代码的开发，直到case通过，并且在通过的基础上进一步进行代码的重构和优化。</p>
+<p><strong>什么是TDD?</strong><br><img src="/images/autoTest/tdd.png" alt="tdd"><br>如图这个就是最常见的TDD开发模式，我们优先进行test case的编写，同时开始代码的开发，直到case通过，并且在通过的基础上进一步进行代码的重构和优化。</p>
 <hr>
 <h3 id="搭建一个自己的自动化测试环境"><a href="#搭建一个自己的自动化测试环境" class="headerlink" title="搭建一个自己的自动化测试环境"></a><strong>搭建一个自己的自动化测试环境</strong></h3><p>分析了一些常用的测试框架之后，将测试框架的主要功能分为图中这些细节的模块，还分了下类。<br><img src="/images/autoTest/structure2.png" alt="structure"><br>而其中单元测试的最底层结构就是测试框架和断言库</p>
 <ul>
 <li>测试框架: 判断内部是否存在异常，存在则console出对应的text信息</li>
 <li><p>断言库: actual值与expect值不一样时，就抛出异常，供外部测试框架检测到，这就是为什么有些测试框架可以自由选择断言库的原因，只要可以抛出异常，外部测试框架就可以工作</p>
 <p>其实这两个本质的实现原理非常简单,简单的实现demo如下</p>
-<pre><code>
- try(实际运行值 != 预期值){
-     console.log("出错了");
- }
-</code>
-</pre>
-
-
-
-
 </li>
 </ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">try(实际运行值 != 预期值)&#123;</div><div class="line">    console.log(<span class="string">"出错了"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
         </div>
       </article>
