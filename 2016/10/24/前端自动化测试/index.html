@@ -131,42 +131,60 @@
         </div>
         <!-- Post Main Content -->
         <div class="entry-content">
-          <h1 id="前端测试的研究方向"><a href="#前端测试的研究方向" class="headerlink" title="前端测试的研究方向"></a>前端测试的研究方向</h1><p>根据2016年最新的<a href="http://stateofjs.com/2016/testing/" target="_blank" rel="external">js现状调查</a>，测试框架的现状是</p>
+          <h1>前端测试的研究方向</h1>
+<p>根据2016年最新的<a href="http://stateofjs.com/2016/testing/" target="_blank" rel="external">js现状调查</a>，测试框架的现状是</p>
 <blockquote>
 <p>Mocha and Jasmine lead the pack.</p>
+</blockquote>
+<blockquote>
 <p>Overall, developers are not happy about JavaScript testing.</p>
 </blockquote>
-<p>大家确实不太喜欢将测试应用到开发中，因为一些众所周知的原因，<br>但其实测试这方面的研究还是在与时俱进，AugularJs和ReactJs都有自己的测试框架。前端单元测试大致的研究方向主要是在以下这三个方向</p>
+<p>大家确实不太喜欢将测试应用到开发中，因为一些众所周知的原因，
+但其实测试这方面的研究还是在与时俱进，AugularJs和ReactJs都有自己的测试框架。前端单元测试大致的研究方向主要是在以下这三个方向</p>
 <ol>
 <li>单元测试</li>
 <li>端到端测试</li>
 <li>集成测试</li>
 </ol>
-<h2 id="1-单元测试"><a href="#1-单元测试" class="headerlink" title="1 单元测试"></a>1 单元测试</h2><h3 id="一些背景知识"><a href="#一些背景知识" class="headerlink" title="一些背景知识"></a>一些背景知识</h3><p><strong>什么是单元测试?</strong><br><em>单元测试主要针对的是针对单一组件的测试</em></p>
-<p><strong>什么样的代码可以进行单元测试?</strong><br>这篇博客<a href="http://alistapart.com/article/writing-testable-javascript" target="_blank" rel="external">writing testable javascript</a> 其中的demo其实就分析了常见的代码写法，也许在实现上来说并无问题，但是它存在</p>
+<h2>1 单元测试</h2>
+<h3>一些背景知识</h3>
+<p><strong>什么是单元测试?</strong>
+<em>单元测试主要针对的是针对单一组件的测试</em></p>
+<p><strong>什么样的代码可以进行单元测试?</strong><br>
+这篇博客<a href="http://alistapart.com/article/writing-testable-javascript" target="_blank" rel="external">writing testable javascript</a> 其中的demo其实就分析了常见的代码写法，也许在实现上来说并无问题，但是它存在</p>
 <ul>
 <li>代码结构不明确，</li>
-<li>太复杂的函数 </li>
+<li>太复杂的函数</li>
 <li>代码状态不明确并不可访问</li>
 <li>网络请求和dom操纵耦合在一起 等等问题，</li>
 </ul>
 <p>导致我们在这个基础上进项单元测试是完全不可能的，所以单元测试本身对代码质量有一定的要求，但是这个与我们所要求的前端好代码并不冲突，是相当契合的。</p>
-<p><strong>什么是TDD?</strong><br><img src="/images/autoTest/tdd.png" alt="tdd"><br>如图这个就是最常见的TDD开发模式，我们优先进行test case的编写，同时开始代码的开发，直到case通过，并且在通过的基础上进一步进行代码的重构和优化。</p>
+<p><strong>什么是TDD?</strong>
+<img src="/images/autoTest/tdd.png" alt="tdd">
+如图这个就是最常见的TDD开发模式，我们优先进行test case的编写，同时开始代码的开发，直到case通过，并且在通过的基础上进一步进行代码的重构和优化。</p>
 <hr>
-<h3 id="搭建一个自己的自动化测试环境"><a href="#搭建一个自己的自动化测试环境" class="headerlink" title="搭建一个自己的自动化测试环境"></a><strong>搭建一个自己的自动化测试环境</strong></h3><p>分析了一些常用的测试框架之后，将测试框架的主要功能分为图中这些细节的模块，还分了下类。<br><img src="/images/autoTest/structure2.png" alt="structure"><br>而其中单元测试的最底层结构就是<strong>测试框架</strong>和<strong>断言库</strong></p>
+<h3><strong>搭建一个自己的自动化测试环境</strong></h3>
+<p>分析了一些常用的测试框架之后，将测试框架的主要功能分为图中这些细节的模块，还分了下类。
+<img src="/images/autoTest/structure2.png" alt="structure">
+而其中单元测试的最底层结构就是<strong>测试框架</strong>和<strong>断言库</strong></p>
 <ul>
 <li>测试框架: 判断内部是否存在异常，存在则console出对应的text信息</li>
-<li><p>断言库: actual值与expect值不一样时，就抛出异常，供外部测试框架检测到，这就是为什么有些测试框架可以自由选择断言库的原因，只要可以抛出异常，外部测试框架就可以工作</p>
-<p>其实这两个本质的实现原理非常简单, demo如下</p>
-</li>
+<li>断言库: actual值与expect值不一样时，就抛出异常，供外部测试框架检测到，这就是为什么有些测试框架可以自由选择断言库的原因，只要可以抛出异常，外部测试框架就可以工作</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="string">"实际运行值"</span>!==<span class="string">"预期结果"</span>)&#123;</div><div class="line">        <span class="keyword">throw</span> <span class="string">"出错了"</span>;</div><div class="line">    &#125;</div><div class="line">&#125; <span class="keyword">catch</span>(err)&#123;</div><div class="line">    <span class="built_in">console</span>.log(err);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p> 有了测试框架和断言库,最基本的测试环境就已经搭建成功,但是在实际开发中我们还是不可避免的使用的其他测试相关的功能;<br> 比如mock库和代码覆盖率,以及node端的jsDom相关技术.目前比较流行的库大概是这些:</p>
+<p>其实这两个本质的实现原理非常简单, demo如下</p>
+<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="string">"实际运行值"</span>!==<span class="string">"预期结果"</span>)&#123;</div><div class="line">        <span class="keyword">throw</span> <span class="string">"出错了"</span>;</div><div class="line">    &#125;</div><div class="line">&#125; <span class="keyword">catch</span>(err)&#123;</div><div class="line">    <span class="built_in">console</span>.log(err);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>有了测试框架和断言库,最基本的测试环境就已经搭建成功,但是在实际开发中我们还是不可避免的使用的其他测试相关的功能;
+比如mock库和代码覆盖率,以及node端的jsDom相关技术.目前比较流行的库大概是这些:</p>
 <blockquote>
-<p>测试框架: Mocha, Jasmine, Jest ,QUnit<br>   断言库：  chai,  expect, assert,should.js<br>   mock库： sinon.js<br>   覆盖率：  istanbul， blanket</p>
+<p>测试框架: Mocha, Jasmine, Jest ,QUnit
+断言库：  chai,  expect, assert,should.js
+mock库： sinon.js
+覆盖率：  istanbul， blanket</p>
 </blockquote>
 <pre><code>hexo new  &quot;关于印刷的基本知识与收费&quot;
-</code></pre><h2 id="2-端到端测试"><a href="#2-端到端测试" class="headerlink" title="2 端到端测试"></a>2 端到端测试</h2><p>   所谓的端到端测试也就是指的UI测试,或者叫功能测试.</p>
+</code></pre>
+<h2>2 端到端测试</h2>
+<p>所谓的端到端测试也就是指的UI测试,或者叫功能测试.</p>
 
         </div>
       </article>
