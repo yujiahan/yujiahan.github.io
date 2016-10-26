@@ -160,7 +160,7 @@
 <p>其实这两个本质的实现原理非常简单, demo如下</p>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">try&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="string">"实际运行值"</span>!==<span class="string">"预期结果"</span>)&#123;</div><div class="line">        throw <span class="string">"出错了"</span>;</div><div class="line">    &#125;</div><div class="line">&#125; catch(err)&#123;</div><div class="line">    console.log(err);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="string">"实际运行值"</span>!==<span class="string">"预期结果"</span>)&#123;</div><div class="line">        <span class="keyword">throw</span> <span class="string">"出错了"</span>;</div><div class="line">    &#125;</div><div class="line">&#125; <span class="keyword">catch</span>(err)&#123;</div><div class="line">    <span class="built_in">console</span>.log(err);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p> 有了测试框架和断言库,最基本的测试环境就已经搭建成功,但是在实际开发中我们还是不可避免的使用的其他测试相关的功能;<br> 比如mock库和代码覆盖率,以及node端的jsDom相关技术.目前比较流行的库大概是这些:</p>
 <blockquote>
 <p>测试框架: Mocha, Jasmine, Jest ,QUnit<br>   断言库：  chai,  expect, assert,should.js<br>   mock库： sinon.js<br>   覆盖率：  istanbul， blanket</p>
@@ -176,6 +176,10 @@
     </div>
     <!-- Pre or Next -->
     <div class="nav-links">
+      
+        <div class="nav-previous">
+          <a href="/2016/10/26/关于印刷的基本知识与收费/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一页</a>
+        </div>
       
       
         <div class="nav-next">
