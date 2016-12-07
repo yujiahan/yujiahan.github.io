@@ -132,7 +132,24 @@
         </div>
         <!-- Post Main Content -->
         <div class="entry-content">
-          
+          <h1>开发了一个node小程序</h1>
+<h2>node调试</h2>
+<p>写了一个简单的抓取程序,一开始只会console.log,后来学会了用node-inspector,感觉突然方便很多,但是也有一些小坑,特此记录.</p>
+<p>1 启动后console无法输入内容, 回车失效 需要手动修改代码
+https://github.com/node-inspector/node-inspector/pull/942/files</p>
+<p>2 node-debug时关闭浏览器后,报错. 需要查看之前程序进程是否还在进行</p>
+<h1>关于服务器部署</h1>
+<p>这次对于aliyun和aws的服务器都进行了部署.</p>
+<p>aws
+优点: 免费12个月有很大吸引力(但注意只限定一个月750h 即一台ec2), 弹性ip
+缺点: 服务器在国外,访问速度比较慢,收费项目有些不太理解, 容易有额外收费,
+并且不支持短信提醒等, 绑定信用卡,不是预存,有风险</p>
+<p>aliyun:
+优点: 肯定适合中国用户,并且有5天无条件退款,之前由于ip问题已退款,流程简单
+缺点: 使用过程中继续探索</p>
+<h1>关于代码开发</h1>
+<p>node自带的http组件使用不方便,可以使用request 组件,其中的jar和pipe应该是抓取神器</p>
+
         </div>
       </article>
     </div>
